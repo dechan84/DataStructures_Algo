@@ -137,14 +137,17 @@ class LinkedList:
             self.head = temp2
             self.length = -1
             # return temp1.value
-            return temp
+            return temp1
 
     # For testing purposes, lets create a method to print the whole list
     def print_list(self):
         temp = self.head
+        results = []
         while temp is not None:
-            print(temp.value)
+            # print(temp.value)
+            results.append(temp.value)
             temp = temp.next
+        return results
 
     # This method receives an index an returns the value
     def get(self, index):
@@ -168,12 +171,12 @@ class LinkedList:
     # previous index
     def insert(self, index, value):
         new_node = Node(value)
-        if index < 0 or index > self.length:
+        if index < 0 or index >= self.length:
             print('Index out of bounds')
             return False
         elif index == 0:
             return self.prepend(value)
-        elif index == self.length:
+        elif index == self.length-1:
             return self.append(value)
         else:
             # Lets reuse get() again to obtain the node parameters based on index
@@ -232,70 +235,3 @@ class LinkedList:
             temp.next = before
             before = temp
             temp = after
-
-
-
-
-
-# Testing phase, remeber to update the return to index.value if you want the values to be printed
-# print("Testing Append")
-my_linked_list = LinkedList(8)
-# my_linked_list.append(2)
-# my_linked_list.append(1)
-# my_linked_list.print_list() # SHould return 8,2,1
-# # print(my_linked_list.length)
-# # my_linked_list.print_list()
-# print("Testing POP")
-# print(my_linked_list.pop())# SHould return 1
-# print(my_linked_list.pop())# SHould return 2
-# print(my_linked_list.pop())# SHould return 8
-# print(my_linked_list.pop())# SHould return None
-# my_linked_list.append(7)
-# my_linked_list.print_list() # SHould return 7
-# print("Testing Prepend")
-# my_linked_list.prepend(6)
-# my_linked_list.prepend(1)
-# my_linked_list.print_list() # SHould return 1,6,7
-# print(my_linked_list.pop())# SHould return 7
-# print(my_linked_list.pop())# SHould return 6
-# print(my_linked_list.pop())# SHould return 1
-# print(my_linked_list.pop())# SHould return None
-# my_linked_list.prepend(1)
-# my_linked_list.print_list() # SHould return 1
-# my_linked_list.pop()
-# print("Testing Pop first")
-# print(my_linked_list.pop_first()) # Should return None
-# my_linked_list.prepend(6)
-# print(my_linked_list.pop_first()) # Should return 6
-# my_linked_list.prepend(1)
-# my_linked_list.prepend(2)
-# print(my_linked_list.pop_first()) # Should return 2
-# print("Testing Get")
-# my_linked_list.prepend(10)
-# print(my_linked_list.get(1)) # Should return 8
-# print(my_linked_list.get(-3)) # Should return None
-# print(my_linked_list.get(7)) # Should return None
-# print("Testing Insert values")
-# my_linked_list.append(7)
-# my_linked_list.append(22)
-# my_linked_list.append(33)
-# my_linked_list.print_list() # Should print 8, 7, 22, 33
-# my_linked_list.insert(3,2)
-# my_linked_list.print_list() # Should print 2, 8, 7, 22, 33
-# print("Testing set values")
-# my_linked_list.append(7)
-# my_linked_list.append(22)
-# my_linked_list.set_value(1,888)
-# my_linked_list.print_list()
-# print("Testing Remove values")
-# my_linked_list.append(7)
-# my_linked_list.append(22)
-# my_linked_list.remove(1)
-# my_linked_list.print_list() # Should print 8, 22,
-print("Testing reverse LinkedList")
-my_linked_list.append(7)
-my_linked_list.append(22)
-my_linked_list.print_list() # Should print 8, 7, 22
-my_linked_list.reverse()
-my_linked_list.print_list() # Should print 22, 7, 8
-
