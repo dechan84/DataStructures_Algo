@@ -1,5 +1,5 @@
 # Pytest Framework for testing LinkedList Class and methods
-# There is a yield method after each test is run that initialize the test again with a LL of one element wquals to 8
+# There is a fixture after each test is run that initialize the test again with a LL of one element equals to 8
 class TestLL:
     # Appending 2 and 1 to previously initiated LL
     # Gold value is expected to be [8, 2, 1]

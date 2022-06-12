@@ -1,7 +1,7 @@
 # Double Linked List sample
-# A DLL is the same as a Linked List, but the difference is that the node has to pointers, next and prev
+# A DLL is the same as a Linked List, but the difference is that the node has two pointers, next and prev
 # Look at this diagram sample>
-# Each element of a LinkedList points to the 'next' element until the last element points to none
+# Each element of a DLinkedList points to the 'next' and the 'prev' element until the last elements points to none
 #           head             tail
 #           |                |
 #           v                v
