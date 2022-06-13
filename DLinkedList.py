@@ -69,7 +69,7 @@ class DoublyLinkedList:
         self.length -= 1
         return temp
 
-    # Pop method
+    # prepend method
     def prepend(self, value):
         new_node = Node(value)
         if self.head is None:
