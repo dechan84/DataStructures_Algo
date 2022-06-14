@@ -1,6 +1,7 @@
 import pytest
 
 from DLinkedList import DoublyLinkedList
+from HashTable import HashTable
 from LinkedList import LinkedList
 from Stacks import Stack
 from Queue import Queue
@@ -24,8 +25,6 @@ def setup(request):
     # Initialize BST with empty tree
     my_bst_tree = BST()
     request.cls.my_bst_tree = my_bst_tree
-
-
-
-
-
+    # Initialize an empty Hash table
+    my_hash = HashTable()
+    request.cls.my_hash = my_hash

@@ -62,7 +62,7 @@
 #                    (15)
 # This is basically a LL and requires O(n) of time complexity
 # For the methods: lookup(), insert(), remove() a BST will take time complexity of O(log n)
-# In LL, lookup(), remove() requires O(n) because they need to loop the list, if you want to insert a node
+# In LL, lookup() and remove() requires O(n) because they need to loop the list, if you want to insert a node
 # in a LL you use append() which is the fastest. We are assuming that lookup and remove are related to the value
 # and not to the index, because by index yes it is O(1)
 # Interview question: If we want a data structure that allows us to add data very quickly but retrieval speed is not
