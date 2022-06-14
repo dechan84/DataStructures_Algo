@@ -1,6 +1,7 @@
 import pytest
 
 from DLinkedList import DoublyLinkedList
+from Graph import Graph
 from HashTable import HashTable
 from LinkedList import LinkedList
 from Stacks import Stack
@@ -28,3 +29,6 @@ def setup(request):
     # Initialize an empty Hash table
     my_hash = HashTable()
     request.cls.my_hash = my_hash
+    # Initialize an empty Graph Adjacency List
+    my_graph = Graph()
+    request.cls.my_graph = my_graph
