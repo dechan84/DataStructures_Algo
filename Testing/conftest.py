@@ -7,6 +7,7 @@ from LinkedList import LinkedList
 from Stacks import Stack
 from Queue import Queue
 from Trees import BST
+from BasicSorts import Sorts
 
 
 @pytest.fixture(autouse =True)
@@ -32,3 +33,7 @@ def setup(request):
     # Initialize an empty Graph Adjacency List
     my_graph = Graph()
     request.cls.my_graph = my_graph
+    # Sorts
+    my_sort = Sorts()
+    request.cls.my_sort = my_sort
+
