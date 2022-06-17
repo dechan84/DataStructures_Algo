@@ -94,3 +94,56 @@ class TestStack:
         self.my_bst_tree.insert(10)
         a = getattr(self.my_bst_tree.minimumValue(self.my_bst_tree.root), "value")
         assert a == 10
+    # Test tree traversal using BFS, we convert a BST into a list by traversing the tree
+    def test_BFS_tree_traversal(self):
+        self.my_bst_tree.insert(10)
+        self.my_bst_tree.insert(15)
+        self.my_bst_tree.insert(7)
+        self.my_bst_tree.insert(8)
+        self.my_bst_tree.insert(14)
+        self.my_bst_tree.insert(16)
+        self.my_bst_tree.insert(9)
+        # The returned list should NOT always be the same order than how we insert each value in the tree, its better
+        # to draw the tree manually and then you can see how each child leaf gets added
+        a = self.my_bst_tree.BFS()
+        assert a == [10, 7, 15, 8, 14, 16, 9]
+    # Test tree traversal using DFS pre order, we convert a BST into a list by traversing the tree
+    def test_DFS_pre_tree_traversal(self):
+        self.my_bst_tree.insert(10)
+        self.my_bst_tree.insert(15)
+        self.my_bst_tree.insert(7)
+        self.my_bst_tree.insert(8)
+        self.my_bst_tree.insert(14)
+        self.my_bst_tree.insert(16)
+        self.my_bst_tree.insert(9)
+        # The returned list should NOT always be the same order than how we insert each value in the tree, its better
+        # to draw the tree manually and then you can see how each child leaf gets added
+        a = self.my_bst_tree.DFS_pre()
+        assert a == [10, 7, 8, 9, 15, 14, 16]
+    # Test tree traversal using DFS post order, we convert a BST into a list by traversing the tree
+    def test_DFS_post_tree_traversal(self):
+        self.my_bst_tree.insert(10)
+        self.my_bst_tree.insert(15)
+        self.my_bst_tree.insert(7)
+        self.my_bst_tree.insert(8)
+        self.my_bst_tree.insert(14)
+        self.my_bst_tree.insert(16)
+        self.my_bst_tree.insert(9)
+        # The returned list should NOT always be the same order than how we insert each value in the tree, its better
+        # to draw the tree manually and then you can see how each child leaf gets added
+        a = self.my_bst_tree.DFS_post()
+        assert a == [9, 8, 7, 14, 16, 15, 10]
+    # Test tree traversal using DFS in order, we convert a BST into a ordered list by traversing the tree
+    def test_DFS_in_tree_traversal(self):
+        self.my_bst_tree.insert(10)
+        self.my_bst_tree.insert(15)
+        self.my_bst_tree.insert(7)
+        self.my_bst_tree.insert(8)
+        self.my_bst_tree.insert(14)
+        self.my_bst_tree.insert(16)
+        self.my_bst_tree.insert(9)
+        # The returned list should NOT always be the same order than how we insert each value in the tree, its better
+        # to draw the tree manually and then you can see how each child leaf gets added
+        a = self.my_bst_tree.DFS_in()
+        assert a == [7, 8, 9, 10, 14, 15, 16]
+

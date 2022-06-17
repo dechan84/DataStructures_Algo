@@ -134,6 +134,75 @@ class BST:
             current_node = current_node.left
         return current_node
 
+    # Tree traversal. Allow us to convert a tree into a list. Two methods exist to travel a BST.
+    # Method 1: Breadth First Search (BFS). We need two list, first list is queue, second list is the result list.
+    # Basically the queue is created where the first element is the root (level 0) later we move it to results
+    # then we add the left and right element (both level 1) of the root to the queue, then we move the first element
+    # on queue to results and add his respective childs left and right (level 2), then we do the same with the right
+    # element (level 1) until we have move all the elements from tree to temp and then to results. Remember the
+    # important part is to manage the queue
+    def BFS(self):
+        queue = []
+        results = []
+        current_node = self.root
+        # Remember to always initialize the queue with the root, if we don't the while loop will never run
+        queue.append(current_node)
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            results.append(current_node.value)
+            if current_node.left is not None:
+                queue.append(current_node.left)
+            if current_node.right is not None:
+                queue.append(current_node.right)
+        return results
+    # Another traversal method: Depth First Search, this method has 3 types (Preorder, postorder and Inorder).
+    # First way DFS PreOrder: We first add the root into results, then search for the root.left
+    # if value exist we add it, keep going left and add value if exist, if we reach None then we go
+    # 1 step back and check the right if it exist we add it and the look for left again, we repeat this until we go
+    # back to root, we then go to root.right if exist we add it and then go to his left and keep doing it until
+    # we go back to root again, return results and remember we use recursion to accomplish this
+    def DFS_pre(self):
+        results = []
+        # We can create a sub function inside DFS_pre for our recursive method too
+
+        def traversal(current_node):
+            results.append(current_node.value)
+            if current_node.left is not None:
+                traversal(current_node.left)
+            if current_node.right is not None:
+                traversal(current_node.right)
+        traversal(self.root)
+        return results
+    # Second way DFS PostOrder: Follows the same traversal than pre order but we only add the value when we search in
+    # the node that node.left and node.right are None or when we have already traversed that node
+    def DFS_post(self):
+        results = []
+        # We can create a sub function inside DFS_pre for our recursive method too
+
+        def traversal(current_node):
+            if current_node.left is not None:
+                traversal(current_node.left)
+            if current_node.right is not None:
+                traversal(current_node.right)
+            results.append(current_node.value)
+        traversal(self.root)
+        return results
+    # Third way DFS InOrder: Follows the same traversal than pre order but we only add the value after we found that
+    # the node.left value is None, then we go to Node.right, all the numbers are written in numerical order
+    def DFS_in(self):
+        results = []
+        # We can create a sub function inside DFS_pre for our recursive method too
+
+        def traversal(current_node):
+            if current_node.left is not None:
+                traversal(current_node.left)
+            results.append(current_node.value)
+            if current_node.right is not None:
+                traversal(current_node.right)
+        traversal(self.root)
+        return results
+
+
 
 
 

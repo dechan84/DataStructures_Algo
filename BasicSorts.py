@@ -97,6 +97,61 @@ class Sorts:
         right = list1[mid:]
         # We need to use recursion to keep breaking down the list until 1 element and merge that
         return self.merge(self.merge_sort(left), self.merge_sort(right))
+    # Quick Sort: We need to first identify the pivot number(i) which is the reference number to compare,
+    # first to compare it with the i+1 number if its bigger then we go to the i+2, if this number is smaller than
+    # pivot we swap positions with the first number that was greater than pivot (in this example should
+    # be with i+1), we should reach to a point where we have grouped all the numbers that are lower than pivot together
+    # and the ones that are bigger than pivot together, then we swap pivot to the position of the last number less than
+    # pivot, we should have the lower numbers on the left and the bigger to the right.
+    # Now we run the method again for the left and the right group until we have a list of 1 element. After that we
+    # should have the list sorted by quick sort.
+    # Pivot, lets define first the code for pivot and the respective references to be able to swap the elements until
+    # all the less than pivot numbers are grouped to the left and all the greater than pivot numbers are grouped to the
+    # right, this is for the first iteration.
+    # Big O analysis: Swap has an loop so that is O(n), in the case of quick_sort it has a recursive method that
+    # requires at least 3 operations for a list of 8 elements again the same relationship as merge short which is
+    # O(log n), in total the time complexity would be O(n log n), this would be for best or average scenario,
+    # if we have an already sorted list that is the worst case scenario, it would take pivot to walkthrou all the list
+    # and compare this is O(n^2), so we need to be very carefull choosing the sort method based on the input we have
+
+    # Swap function
+    def swap(self, mylist, i1, i2):
+        temp = mylist[i1]
+        mylist[i1] = mylist[i2]
+        mylist[i2] = temp
+    def pivot(self, mylist, pivot_index, end_index):
+        swap_index = pivot_index
+        # We start to loop to find the elements to compare with pivot index until the end of list
+        for i in range(pivot_index+1, end_index+1):
+            # We do swap when we find elements lesser than pivot
+            if mylist[i] < mylist[pivot_index]:
+                swap_index += 1
+                self.swap(mylist, swap_index, i)
+        # The last position of swap_index will always be the last lesser number compared to pivot that was swap
+        self.swap(mylist, pivot_index, swap_index)
+        return swap_index
+    # This is the quick sort method using pivot and swap, at the start it receives the index of zero on the left and
+    # len(mylist) on right
+    def quick_sort_helper(self, mylist, left, right):
+        # Base case is defined when left is bigger or equal to right (this happens when we cannot sort anymore and the
+        # index left and right are the same)
+        if left<right:
+            pivot_index = self.pivot(mylist, left, right)
+            # After running the first pivot, we have the grouped list and the swap of pivot, we also got the swap_index
+            # Now with those values we can recursively run quick_sort until we reach 1 element list
+            self.quick_sort_helper(mylist, left, pivot_index-1)
+            self.quick_sort_helper(mylist, pivot_index+1, right)
+        return mylist
+    #Some optimization to the code using the quick_sort_helper
+    def quick_sort(self, mylist):
+        return self.quick_sort_helper(mylist, 0, len(mylist)-1)
+
+
+
+
+
+
+
 
 
 
